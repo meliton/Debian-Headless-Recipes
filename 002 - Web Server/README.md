@@ -4,7 +4,7 @@ Recipe to install BusyBox httpd Web Server as a daemon with optional PHP and cgi
 ### Prerequisites
 Follow the instructions for `001 - Debian GNU Core Headless Server` before continuing.<br>
 A static address is highly recommended.<br>
-Assumes web server home directory is `/home/user`.
+Assumes web server home directory is `/home/user`.<br>
 Assumes IP address is `192.168.10.70`.
 
 ### Objectives
