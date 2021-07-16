@@ -1,10 +1,9 @@
 # 002 - Web Server using Busybox's httpd
-Recipe to install web server with optional PHP and cgi support on bare metal or a virtual machine.<br>
+Recipe to install BusyBox httpd Web Server as a daemon with optional PHP and cgi support on bare metal or a virtual machine.<br>
 
-### Virtual machine settings
-- At least 576 megs of RAM
-- 4 gig hard drive
-- Bridge-mode network interface card for live IP 
+### Prerequisites
+Follow the instructions for `001 - Debian GNU Core Headless Server` before continuing.<br>
+A static address is highly recommended.
 
 ### Objectives
 I. Install Minimum Vanilla Debian Buster<br>
@@ -18,8 +17,8 @@ VIII. Configure NTP<br>
 IX. Edit hosts file<br>
 X. Optional, Set Static Addess on Ethernet Interface<br>
 
-### I. Install Minimum Vanilla Debian Buster<br>
-Set these options when they first appear
+### I. Verify busybox httpd applet<br>
+At the terminal, type `busybox` or `busybox --list` and look for `httpd`
 - Set name of box to "BUSTER"
 - Add a user called "user"
 - Set your time zone
