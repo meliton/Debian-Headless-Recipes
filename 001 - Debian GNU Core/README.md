@@ -96,14 +96,14 @@ deb-src http://deb.debian.org/debian/ buster main contrib non-free
 
 
 ### VI. Root access via SSH
-Edit `(/etc/ssh/sshd_config)` file 
+Edit `/etc/ssh/sshd_config` file 
 ```
 ListenAddress 0.0.0.0
 PermitRootLogin yes
 ```
 
 ### VII. Speedup Boot and Disable IPv6
-Edit `(/etc/default/grub)` file
+Edit `/etc/default/grub` file
 ```
 GRUB_TIMEOUT=2
 GRUB_CMDLINE_LINUX="ipv6.disable=1 quiet"
@@ -111,7 +111,7 @@ GRUB_CMDLINE_LINUX="ipv6.disable=1 quiet"
 `update-grub`   <-- applies those changes
 
 ### VIII. Configure NTP
-Edit (/etc/systemd/timesyncd.conf) file to change to Google's time servers
+Edit `/etc/systemd/timesyncd.conf` file to change to Google's time servers
 ```
 NTP=time.google.com
 ```
