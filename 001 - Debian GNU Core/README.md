@@ -27,8 +27,10 @@ Option A: Select the default `Guided - use entire disk` option.
 - Go to part III.
 
 Option B: Select the `Manual` option.
-- Select the hard drive `(sda)` and press Enter
-- You may need to `Create new empty partition table on this device?` Select `Yes`, then press Enter.
+- HARD DRIVE SELECTION
+  - Select the hard drive `(sda)` and press Enter
+  - You may need to `Create new empty partition table on this device?` Select `Yes`, then press Enter.
+- SWAP FILE SETUP
   - Now, highlight the `pri/log    4.3 GB    FREE SPACE` drive and press Enter.
   - Highlight `Create a new partition`, then press Enter.
   - Set the `New partition size:` to `110M`, then press Enter.
@@ -36,18 +38,19 @@ Option B: Select the `Manual` option.
   - Select `Beginning` for the `Location for the new partition`, then press Enter.
   - Press Enter to change the `Use as:` partition setting to `swap area`.
   - Select `Done setting up the partition`, then press Enter.
-
+- SYSTEM PARTITION SETUP
   - Now, highlight the `pri/log    4.2 GB    FREE SPACE` drive and press Enter.
   - Highlight `Create a new partition`, then press Enter.
   - Set the `New partition size:` to `max`, then press Enter.
   - Select `Primary` for the `Type of the new partition`, then press Enter.
   - Highlight `Bootable flag` and press Enter to toggle it to `on`.
   - Select `Done setting up the partition`, then press Enter.
-- Select `Finish partitioning and write changes to disk` and press Enter
-- Select `Yes` to `Write the changes to disk?` and press Enter.
-- Go to part III.
+- FINALIZE PARTITION
+  - Select `Finish partitioning and write changes to disk` and press Enter
+  - Select `Yes` to `Write the changes to disk?` and press Enter.
+  - Go to part III.
 
-### III. 
+### III. System Software Installation
 - Select `No` for `Scan another CD or DVD?`, then press Enter.
 - Select `Yes` for `Use a network mirror?`, then press Enter.
   - You can use the defaults of `United States` and `deb.debian.org` (or the settings for your country)
@@ -55,7 +58,6 @@ Option B: Select the `Manual` option.
 - Select `No` for `Participate in the package usage survey?` then press Enter.
 - Use the space bar to set the following options and then `Continue`.
 ```
-==============================================
 [ ] Debian desktop environment
 [ ] ... GNOME
 [ ] ... Xfce
@@ -64,7 +66,6 @@ Option B: Select the `Manual` option.
 [ ] print server
 [*] SSH server
 [ ] standard system utilities
-==============================================
 ```
 
 ### IV. Grub boot loader settings
