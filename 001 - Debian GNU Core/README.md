@@ -89,3 +89,50 @@ deb-src http://deb.debian.org/debian/ buster main contrib non-free
 `apt upgrade`<br>
 `apt install net-tools`   <-- install network tools like netstat, ping, etc<br>
 `apt install dnsutils`    <-- dig and other dns tools<br>
+
+
+### VI. Root access via SSH
+Edit `(/etc/ssh/sshd_config)` file 
+```
+ListenAddress 0.0.0.0
+PermitRootLogin yes
+```
+
+### VII. Speedup Boot and Disable IPv6
+Edit `(/etc/default/grub)` file
+```
+GRUB_TIMEOUT=2
+GRUB_CMDLINE_LINUX="ipv6.disable=1 quiet"
+```
+`update-grub`   <-- applies those changes
+
+### IX. Configure NTP
+Edit (/etc/systemd/timesyncd.conf) file to change to Google's time servers
+```
+NTP=time.google.com
+```
+- systemctl restart systemd-timesyncd.service    <-- restarts the time service
+- systemctl status systemd-timesyncd.service     <-- check the time service status
+- timedatectl        
+
+### X. Verify hosts and hostname
+Edit (/etc/hostname) to be printsrv
+```
+printsrv
+```
+
+Edit (/etc/hosts) file adding the following to the end
+```
+127.0.0.1       printsrv
+```
+
+II.  Set Static Addess on Ethernet Interface
+Set static address by editing (/etc/network/interfaces) file
+```
+iface eth0 inet static
+     address 192.168.10.70
+     network 192.168.10.0
+     netmask 255.255.255.0
+     broadcast 192.168.10.255
+     gateway 192.168.10.1
+```
