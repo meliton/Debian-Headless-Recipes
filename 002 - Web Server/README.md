@@ -3,30 +3,21 @@ Recipe to install BusyBox httpd Web Server as a daemon with optional PHP and cgi
 
 ### Prerequisites
 Follow the instructions for `001 - Debian GNU Core Headless Server` before continuing.<br>
-A static address is highly recommended.
+A static address is highly recommended.<br>
+Assumes web server home directory is `/home/user`.
+Assumes IP address is `192.168.10.70`.
 
 ### Objectives
-I. Install Minimum Vanilla Debian Buster<br>
-II. Partition disks options (option A or B) <br>
+I. Verify busybox httpd applet<br>
+II. Create Service Daemon File<br>
 III. System Software Installation<br>
-IV. Grub boot loader and reboot<br>
-V. Update apt and install basic tools<br>
-VI. Root access via SSH<br>
-VII. Speedup Boot and Disable IPv6<br>
-VIII. Configure NTP<br>
-IX. Edit hosts file<br>
-X. Optional, Set Static Addess on Ethernet Interface<br>
+IV. Install PHP and CGI Support (optional from here)<br>
 
-### I. Verify busybox httpd applet<br>
+### I. Verify busybox httpd applet
 At the terminal, type `busybox` or `busybox --list` and look for `httpd`
-- Set name of box to "BUSTER"
-- Add a user called "user"
-- Set your time zone
 
 
-
-XXX: Run BusyBox httpd Web Server as a Daemon
-
+### II. Create Service Daemon File
 Create `/etc/systemd/system/httpd.service` file with the following
 ```
 [Unit]
@@ -43,9 +34,10 @@ ExecStart=/bin/busybox httpd -h /home/user
 WantedBy=multi-user.target
 ```
 
-- systemctl enable httpd.service
-- service httpd start   
+`systemctl enable httpd.service`<br>
+`service httpd start`
 
+### III. Create Sample index file for Webserver
 Create `/home/user/index.html` and add the following
 ```
 <html><body>
@@ -53,13 +45,15 @@ Test website, works!
 </body></html>
 ```
 
-Check to see if the webserver is running by using your browser and open
-`http://192.168.10.70`
+Open a web browser and and check `http://192.168.10.70`
 
+### IV. Install PHP and CGI Support (optional from here)
+`apt install php-cgi`
 
-- apt install php-cgi
+Make note of your php version. Mine is 7.3.
 
-Edit `/etc/php/7.3/cgi/php.ini`
+### V. Configure PHP for CGI Support
+Edit `/etc/php/7.3/cgi/php.ini` file
 ```
 cgi.force_redirect = 0
 cgi.redirect_status_env ="yes";
@@ -69,9 +63,10 @@ Create `/etc/httpd.conf` and add the following
 ```
 *.php:/usr/bin/php-cgi7.3
 ```
-- service httpd restart 
 
+`service httpd restart `  <-- restarts web service<br>
 
+### VI. Test PHP
 Create `/home/user/phpinfo.php` and add the following
 ```
 <?php
@@ -79,5 +74,5 @@ phpinfo();
 ?>
 ```
 
-
+Open a web browser and and check `http://192.168.10.70/phpinfo.php`
 
