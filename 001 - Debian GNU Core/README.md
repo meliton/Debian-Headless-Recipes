@@ -127,7 +127,8 @@ Edit `/etc/hosts` file so it only has the `127.0.0.1` entries
 ```
 
 ### X. Optional, Set Static Addess on Ethernet Interface
-Set static address by editing `/etc/network/interfaces` file. Use settings for your network.
+Set static address by editing `/etc/network/interfaces` file. Use settings for your network.<br>
+`iface eth0` might be different, (eth0, ens33, enp01, etc) so leave it as is and only change `dhcp` to `static`. 
 ```
 iface eth0 inet static
      address 192.168.10.70
