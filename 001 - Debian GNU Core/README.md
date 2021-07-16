@@ -111,19 +111,15 @@ Edit (/etc/systemd/timesyncd.conf) file to change to Google's time servers
 ```
 NTP=time.google.com
 ```
-- systemctl restart systemd-timesyncd.service    <-- restarts the time service
-- systemctl status systemd-timesyncd.service     <-- check the time service status
-- timedatectl        
+`systemctl restart systemd-timesyncd.service`    <-- restarts the time service<br>
+`systemctl status systemd-timesyncd.service`     <-- check the time service status<br>
+`timedatectl`
 
-### X. Verify hosts and hostname
-Edit (/etc/hostname) to be printsrv
+### X. Edit hosts file
+Edit `/etc/hosts` file so it only has the `127.0.01` entries
 ```
-printsrv
-```
-
-Edit (/etc/hosts) file adding the following to the end
-```
-127.0.0.1       printsrv
+127.0.0.1       localhost
+127.0.0.1       buster
 ```
 
 II.  Set Static Addess on Ethernet Interface
