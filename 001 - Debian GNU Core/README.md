@@ -8,9 +8,10 @@ Recipe to install Debian as a headless server.<br>
 
 ### Objectives
 I. Install Debian Buster<br>
-II. Housecleaning Tasks <br>
-II. Set Static Address on Ethernet Interface<br>
-
+II. Partition disks options (option A or B) <br>
+III. System Software Installation<br>
+IV. Grub boot loader and reboot<br>
+V. Update apt and install basic tools<br>
 
 
 ### I. Install Minimum Vanilla Debian Buster<br>
@@ -68,19 +69,18 @@ Option B: Select the `Manual` option.
 [ ] standard system utilities
 ```
 
-### IV. Grub boot loader settings
+### IV. Grub boot loader and reboot
 - Select `Yes` for `Install the GRUB boot loader to the master boot record?`, then press Enter.
 - Highlight `/dev/sda` then press Enter.
 - Now that the installation is complete, press Enter to `Continue`. The system will reboot.
 
-#### Edit (/etc/apt/sources.list) file and add at the end of each line<br>
+### V. Update apt and install basic tools
+Edit `/etc/apt/sources.list` file and add at the end of each line<br>
 ```
-==============================================
 main contrib non-free
-==============================================
 ```
 
-`- apt update`<br>
-`- apt upgrade`<br>
-`- apt install net-tools`   <-- install network tools like netstat, ping, etc<br>
-`- apt install dnsutils`    <-- dig and other dns tools<br>
+`apt update`<br>
+`apt upgrade`<br>
+`apt install net-tools`   <-- install network tools like netstat, ping, etc<br>
+`apt install dnsutils`    <-- dig and other dns tools<br>
