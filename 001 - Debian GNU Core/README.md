@@ -12,7 +12,11 @@ II. Partition disks options (option A or B) <br>
 III. System Software Installation<br>
 IV. Grub boot loader and reboot<br>
 V. Update apt and install basic tools<br>
-
+VI. Root access via SSH<br>
+VII. Speedup Boot and Disable IPv6<br>
+VIII. Configure NTP<br>
+IX. Edit hosts file<br>
+X. Optional, Set Static Addess on Ethernet Interface<br>
 
 ### I. Install Minimum Vanilla Debian Buster<br>
 Set these options when they first appear
@@ -106,7 +110,7 @@ GRUB_CMDLINE_LINUX="ipv6.disable=1 quiet"
 ```
 `update-grub`   <-- applies those changes
 
-### IX. Configure NTP
+### VIII. Configure NTP
 Edit (/etc/systemd/timesyncd.conf) file to change to Google's time servers
 ```
 NTP=time.google.com
@@ -115,15 +119,15 @@ NTP=time.google.com
 `systemctl status systemd-timesyncd.service`     <-- check the time service status<br>
 `timedatectl`
 
-### X. Edit hosts file
-Edit `/etc/hosts` file so it only has the `127.0.01` entries
+### IX. Edit hosts file
+Edit `/etc/hosts` file so it only has the `127.0.0.1` entries
 ```
 127.0.0.1       localhost
 127.0.0.1       buster
 ```
 
-II.  Set Static Addess on Ethernet Interface
-Set static address by editing (/etc/network/interfaces) file
+### X. Optional, Set Static Addess on Ethernet Interface
+Set static address by editing `/etc/network/interfaces` file. Use settings for your network.
 ```
 iface eth0 inet static
      address 192.168.10.70
@@ -132,3 +136,5 @@ iface eth0 inet static
      broadcast 192.168.10.255
      gateway 192.168.10.1
 ```
+### Now reboot the system
+`reboot`
