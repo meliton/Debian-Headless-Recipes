@@ -1,5 +1,5 @@
 # 001 - Debian GNU Core Headless Server
-Recipe to install Debian as a headless server.<br>
+Recipe to install Debian as a headless server on bare metal or a virtual machine.<br>
 
 ### Virtual machine settings
 - At least 576 megs of RAM
@@ -7,7 +7,7 @@ Recipe to install Debian as a headless server.<br>
 - Bridge-mode network interface card for live IP 
 
 ### Objectives
-I. Install Debian Buster<br>
+I. Install Minimum Vanilla Debian Buster<br>
 II. Partition disks options (option A or B) <br>
 III. System Software Installation<br>
 IV. Grub boot loader and reboot<br>
@@ -75,9 +75,14 @@ Option B: Select the `Manual` option.
 - Now that the installation is complete, press Enter to `Continue`. The system will reboot.
 
 ### V. Update apt and install basic tools
-Edit `/etc/apt/sources.list` file and add at the end of each line<br>
+Edit `/etc/apt/sources.list` file<br>
+- You'll comment out all references to `deb cdrom:` with a `#`
+- You'll add `main contrib non-free` at the end of each `deb` and `deb-src` line.
 ```
-main contrib non-free
+# deb cdrom:[blah blah blah....]
+deb http://deb.debian.org/debian/ buster main contrib non-free
+deb-src http://deb.debian.org/debian/ buster main contrib non-free
+...
 ```
 
 `apt update`<br>
