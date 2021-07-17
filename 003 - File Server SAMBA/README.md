@@ -26,7 +26,7 @@ V. Test SAMBA from Windows 7/10<br>
 `adduser user3`  <-- adds the user3 user... password is `password`<br>
 
 ### II. Install SAMBA/CIFS
-`apt install samba`			<-- creates ability to share<br>
+`apt install samba --no-install-recommends`			<-- creates ability to share<br>
 `apt install cifs-utils`	<-- allows automounting shares via fstab<br>
 `apt install smbclient`		<-- allows `smbclient -L localhost` command<br>
 
