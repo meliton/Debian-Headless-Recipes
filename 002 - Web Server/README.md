@@ -69,9 +69,7 @@ Create `/etc/httpd.conf` and add the following
 ### VI. Test PHP
 Create `/home/user/phpinfo.php` and add the following
 ```
-<?php
-phpinfo();
-?>
+<?php phpinfo(); ?>
 ```
 
 Open a web browser and and check `http://192.168.10.70/phpinfo.php`
