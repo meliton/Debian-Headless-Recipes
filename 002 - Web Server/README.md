@@ -8,14 +8,16 @@ Assumes web server home directory is `/home/user`.<br>
 Assumes IP address is `192.168.10.70`.
 
 ### Objectives
-I. Verify busybox httpd applet<br>
+I. Verify Busybox httpd Applet<br>
 II. Create Service Daemon File<br>
 III. System Software Installation<br>
 IV. Install PHP and CGI Support (optional from here)<br>
+V. Configure PHP for CGI Support<br>
+VI. Test PHP<br>
+VII. Test CGI
 
-### I. Verify busybox httpd applet
+### I. Verify Busybox httpd Applet
 At the terminal, type `busybox` or `busybox --list` and look for `httpd`
-
 
 ### II. Create Service Daemon File
 Create `/etc/systemd/system/httpd.service` file with the following
@@ -50,7 +52,7 @@ Open a web browser and and check `http://192.168.10.70`
 ### IV. Install PHP and CGI Support (optional from here)
 `apt install php-cgi`
 
-Make note of your php version. Mine is 7.3.
+Make note of your php version. <strong>Mine is 7.3.</strong>
 
 ### V. Configure PHP for CGI Support
 Edit `/etc/php/7.3/cgi/php.ini` file
@@ -73,4 +75,9 @@ Create `/home/user/phpinfo.php` and add the following
 ```
 
 Open a web browser and and check `http://192.168.10.70/phpinfo.php`
+
+### VII. Test CGI
+Open a web browser and and check `http://192.168.10.70/phpinfo.php?FOOBAR=BARFOO`<br>
+
+Check the output of phpinfo and look under <strong>PHP Variables</strong> for `$_REQUEST['foobar']`, `$_GET['foobar']`, `_SERVER["REQUEST_URI"]`, and `$_SERVER['QUERY_STRING']` for BARFOO and FOOBAR.<br>
 
