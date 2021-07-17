@@ -1,4 +1,4 @@
-# Debian-Headless-Recipes
+# Debian Headless Recipes
 Different recipes to install Debian as a headless server. 
 
 The recipes include:<br>
