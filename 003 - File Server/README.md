@@ -1,5 +1,5 @@
 # 003 - File Server using SAMBA
-Recipe to install a file server using samba on bare metal or a virtual machine.<br>
+Recipe to install a file server using SAMBA on bare metal or a virtual machine.<br>
 
 ### Prerequisites
 Follow the instructions for `001 - Debian GNU Core Headless Server` before continuing.<br>
@@ -31,13 +31,13 @@ V. Test SAMBA from Windows 7/10<br>
 `apt install smbclient`		<-- allows `smbclient -L localhost` command<br>
 
 ### III. Create SAMBA Passwords for Users
-`smbpasswd -a root`<br>
-`smbpasswd -a user1`<br>
-`smbpasswd -a user2`<br>
-`smbpasswd -a user3`<br>
+`smbpasswd -a root` <-- password is `password`<br>
+`smbpasswd -a user1` <-- password is `password`<br>
+`smbpasswd -a user2` <-- password is `password`<br>
+`smbpasswd -a user3` <-- password is `password`<br>
 
 ### IV. Configure SAMBA
-Edit `/etc/samba/smb.conf` by adding the following information to the end 
+Edit `/etc/samba/smb.conf` by adding the following information to the end of the file 
 ```
 [user1]
 comment = Danger, Admin Share
@@ -58,14 +58,22 @@ read only = No
 valid users = root, user3
 ```
 
-...In the the [global] section, fix ...maybe...<br>
+In the the `[global]` section<br>
 `workgroup    = HOME`      <-- to the right workgroup i.e HOME<br>
 `netbios name = BUSTER`    <-- and add this...<br>
   
 `testparm`           <-- checks samba configuration changes<br>
 
 ### V. Test SAMBA from Windows 7/10
-From a Windows 7 or 10 computer...
+- From a Windows 7 or 10 computer open File Explorer.
+- In the Address Bar, type `\\192.168.10.70` then press Enter. You should see user1, user2, and user3 SAMBA shares.
+- Double-click user1.<br>
+  - In the <strong>Windows Security</strong> dialog box, enter
+    - User name: `user1`
+    - Password: `password`
+- Then click Ok.
+
+You can now create, edit and delete files in those shares using the correct username and password.
 
 
 
