@@ -14,12 +14,11 @@ Assumes IP address is `192.168.10.70`.
 
 ### Objectives
 I. Add Users to the System<br>
-II. Create Service Daemon File<br>
-III. System Software Installation<br>
-IV. Install PHP and CGI Support (optional from here)<br>
-V. Configure PHP for CGI Support<br>
-VI. Test PHP<br>
-VII. Test CGI
+II. Install SAMBA/CIFS<br>
+III. Create SAMBA Passwords for Users<br>
+IV. Configure SAMBA<br>
+V. Test SAMBA from Windows 7/10<br>
+
 
 ### I. Add Users to the System
 `adduser user1`  <-- adds the user1 user... password is `password`<br>
@@ -37,8 +36,8 @@ VII. Test CGI
 `smbpasswd -a user2`<br>
 `smbpasswd -a user3`<br>
 
-
-Edit (/etc/samba/smb.conf) by adding the following information to the end 
+### IV. Configure SAMBA
+Edit `/etc/samba/smb.conf` by adding the following information to the end 
 ```
 [user1]
 comment = Danger, Admin Share
@@ -48,26 +47,25 @@ valid users = root, user1
 
 [user2]
 comment = Danger, Admin Share
-path = /home/user1
+path = /home/user2
 read only = No
-valid users = root, user1
+valid users = root, user2
 
 [user3]
 comment = Danger, Admin Share
-path = /home/user1
+path = /home/user3
 read only = No
-valid users = root, user1
-
-[user4]
-comment = Danger, Admin Share
-path = /home/user1
-read only = No
-valid users = root, user1
+valid users = root, user3
 ```
 
-...In the the [global] section, fix ...maybe...
-  workgroup    = HOME          <-- to the right workgroup i.e HOME
-  netbios name = FILESERVER    <-- and add this...
+...In the the [global] section, fix ...maybe...<br>
+`workgroup    = HOME`      <-- to the right workgroup i.e HOME<br>
+`netbios name = BUSTER`    <-- and add this...<br>
   
-- testparm           <-- checks samba configuration changes
+`testparm`           <-- checks samba configuration changes<br>
+
+### V. Test SAMBA from Windows 7/10
+From a Windows 7 or 10 computer...
+
+
 
