@@ -1,6 +1,7 @@
 # w100 - Attract mode for Windows
 Recipe to cross compile attract mode for Windows with Debian Buster.<br>
-We will compile ffmpeg to include only the options we need making the overall executable much smaller.
+We will compile ffmpeg to include only the options we need making the overall executable much smaller.<br>
+Using MXE on Debian Buster, we're going to compile attract mode for Windows.
 
 ### Prerequisites
 Follow the instructions for `001 - Debian GNU Core Headless Server` before continuing.<br>
@@ -10,9 +11,6 @@ A static address is recommended.<br>
 I.  Install MXE and prepare Environment<br>
 II.  Install attractmode dependencies<br>
 III. Compile attractmode with SWF patch
-
-MXE on Debian Buster
-We're going to compile attract mode for windows...
 
 ### I.  Install MXE and prepare Environment
 Install the dependencies...<br>
