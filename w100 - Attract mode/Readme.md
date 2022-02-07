@@ -2,35 +2,35 @@
 Recipe to cross compile attract mode for Windows with Debian Buster.<br>
 We will compile ffmpeg to include only the options we need making the overall executable much smaller.
 
+### Prerequisites
+Follow the instructions for `001 - Debian GNU Core Headless Server` before continuing.<br>
+A static address is recommended.<br>
+
 ### Objectives
-I. Install Minimum Vanilla Debian Buster<br>
-II. Install MXE and prepare Environment <br>
-III. System Software Installation<br>
-IV. Grub boot loader and reboot<br>
-V. Update apt and install basic tools<br>
+I.   Install Minimum Vanilla Debian Buster<br>
+II.  Install MXE and prepare Environment <br>
+III. Compile attract mode
 
 MXE on Debian Buster
 We're going to compile attract mode for windows...
 
-### II. Install MXE and prepare Environment
+### I. Install Minimum Vanilla Debian Buster
 
-Install the dependencies...
-- apt install autoconf build-essential autopoint bison flex g++-multilib gettext git gperf intltool libgdk-pixbuf2.0-dev libltdl-dev libssl-dev libtool-bin libxml-parser-perl lzip p7zip-full python ruby wget 
+Install the dependencies...<br>
+`apt install autoconf build-essential autopoint bison flex g++-multilib gettext git gperf intltool libgdk-pixbuf2.0-dev libltdl-dev libssl-dev libtool-bin libxml-parser-perl lzip p7zip-full python ruby wget `
 
+Clone the repository <br>
+`git clone https://github.com/mxe/mxe.git`
 
-Clone the repository 
-- git clone https://github.com/mxe/mxe.git
+Get the basic compiler up and running<br>
+`cd mxe`<br>
+`make cc`
 
-Get the basic compiler up and running
-- cd mxe
-- make cc
-
-
-Edit Environment Variables
-- export PATH=/root/mxe/usr/bin:$PATH
+Edit Environment Variables<br>
+`export PATH=/root/mxe/usr/bin:$PATH`
 
 
-Edit (/root/mxe/ffmpeg.mk) and replace with the following
+Edit `/root/mxe/ffmpeg.mk` and replace it with the following
 ```
 # This file is part of MXE. See LICENSE.md for licensing information.
 
@@ -62,15 +62,18 @@ define $(PKG)_BUILD
 endef
 ```
 
-### II. Compile dependency programs
+### II.  Install MXE and prepare Environment
 
-- make ffmpeg sfml libarchive
+`make ffmpeg sfml libarchive`<br>
 
-Compile attractmode with SWF patch
-- cd ~/mxe
-- git clone https://github.com/mickelson/attract
-- cd attract
-- wget https://github.com/mickelson/attract/files/7532474/attract-gameswf-gcc11-no-access-control.patch.txt -O Makefile.patch
-- patch < Makefile.patch
-- make -j3 CROSS=1 TOOLCHAIN=i686-w64-mingw32.static WINDOWS_STATIC=1 WINDOWS_CONSOLE=1
+### III. Compile attractmode with SWF patch
+`cd ~/mxe`<br>
+`git clone https://github.com/mickelson/attract`<br>
+`cd attract`<br>
+`wget https://github.com/mickelson/attract/files/7532474/attract-gameswf-gcc11-no-access-control.patch.txt -O Makefile.patch`<br>
+`patch < Makefile.patch`<br>
+
+Then you can compile with or without console output<br>
+Console: `make -j3 CROSS=1 TOOLCHAIN=i686-w64-mingw32.static WINDOWS_STATIC=1 WINDOWS_CONSOLE=1`<br>
+No Console: `make -j3 CROSS=1 TOOLCHAIN=i686-w64-mingw32.static WINDOWS_STATIC=1 `<br>
 
