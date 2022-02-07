@@ -7,15 +7,14 @@ Follow the instructions for `001 - Debian GNU Core Headless Server` before conti
 A static address is recommended.<br>
 
 ### Objectives
-I.   Install Minimum Vanilla Debian Buster<br>
-II.  Install MXE and prepare Environment <br>
-III. Compile attract mode
+I.  Install MXE and prepare Environment<br>
+II.  Install attractmode dependencies<br>
+III. Compile attractmode with SWF patch
 
 MXE on Debian Buster
 We're going to compile attract mode for windows...
 
-### I. Install Minimum Vanilla Debian Buster
-
+### I.  Install MXE and prepare Environment
 Install the dependencies...<br>
 `apt install autoconf build-essential autopoint bison flex g++-multilib gettext git gperf intltool libgdk-pixbuf2.0-dev libltdl-dev libssl-dev libtool-bin libxml-parser-perl lzip p7zip-full python ruby wget `
 
@@ -28,7 +27,6 @@ Get the basic compiler up and running<br>
 
 Edit Environment Variables<br>
 `export PATH=/root/mxe/usr/bin:$PATH`
-
 
 Edit `/root/mxe/ffmpeg.mk` and replace it with the following
 ```
@@ -62,7 +60,7 @@ define $(PKG)_BUILD
 endef
 ```
 
-### II.  Install MXE and prepare Environment
+### II.  Install attractmode dependencies
 
 `make ffmpeg sfml libarchive`<br>
 
